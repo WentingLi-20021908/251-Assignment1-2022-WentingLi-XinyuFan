@@ -7,12 +7,14 @@ class TextFrame extends JFrame {
     // Frame
     JFrame frame;
 
-    // Constructor
     TextFrame()
     {
         // Create a frame
         frame = new JFrame("Test Editor");
-
+        Menu menu = new Menu();
+        frame.setJMenuBar(menu);
+        JTextArea jTextArea = new JTextArea();
+        frame.add(jTextArea);
         frame.setSize(500, 500);
         frame.show();
     }
