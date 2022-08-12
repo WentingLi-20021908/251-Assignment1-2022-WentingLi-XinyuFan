@@ -11,10 +11,11 @@ class TextFrame extends JFrame {
     {
         // Create a frame
         frame = new JFrame("Test Editor");
-        Menu menu = new Menu();
+
+        Menu menu = new Menu(frame);
         frame.setJMenuBar(menu);
-        JTextArea jTextArea = new JTextArea();
-        frame.add(jTextArea);
+
+
         frame.setSize(500, 500);
         frame.show();
     }
