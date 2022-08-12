@@ -1,11 +1,18 @@
 package org.ass1;
 
 import javax.swing.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-public class Menu extends JMenuBar {
+public class Menu extends JMenuBar implements ActionListener {
 
-    public Menu() {
+    JTextArea textarea;
+    JFrame frame;
+    public Menu( JFrame frame) {
+        this.frame = frame;
         ArrayList<String> fileItems =new ArrayList<>();
         fileItems.add("New");
         fileItems.add("Open");
@@ -35,14 +42,60 @@ public class Menu extends JMenuBar {
         this.add(mv);
         this.add(mm);
         this.add(mh);
-    }
 
+        textarea = new JTextArea();
+        frame.add(textarea);
+    }
     public JMenu createMenuItems(String menuName, ArrayList<String> items){
 
         JMenu mb = new JMenu(menuName);
         for (int i = 0; i < items.size(); i++) {
-            mb.add( new JMenuItem(items.get(i)));
+            JMenuItem item =  new JMenuItem(items.get(i));
+            item.addActionListener(this);
+            mb.add(item);
         }
         return mb;
     }
+    public void actionPerformed(ActionEvent e)
+    {
+        String itemName = e.getActionCommand();
+
+        if (itemName.equals("Cut")) {
+            textarea.cut();
+        }
+        else if (itemName.equals("Copy")) {
+            textarea.copy();
+        }
+        else if (itemName.equals("Paste")) {
+            textarea.paste();
+        }
+        else if (itemName.equals("Save")) {
+
+        }
+        else if (itemName.equals("Time and Date")){
+
+        }
+        else if (itemName.equals("Print")) {
+
+        }
+        else if (itemName.equals("Open")) {
+
+        }
+        else if (itemName.equals("New")) {
+            textarea.setText("");
+        }
+        else if (itemName.equals("Exit")) {
+            frame.setVisible(false);
+        }
+        else if (itemName.equals("About")){
+
+        }
+    }
+
+
+
+
+
+
+
 }
