@@ -73,7 +73,7 @@ public class Menu extends JMenuBar implements ActionListener {
 
         }
         else if (itemName.equals("Time and Date")){
-
+            timeAndDate();
         }
         else if (itemName.equals("Print")) {
 
@@ -91,7 +91,11 @@ public class Menu extends JMenuBar implements ActionListener {
 
         }
     }
-
+    public void timeAndDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
+        Date date =new Date();
+        textarea.setText(sdf.format(date));
+    }
 
 
 
