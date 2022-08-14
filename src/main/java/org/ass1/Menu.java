@@ -76,7 +76,12 @@ public class Menu extends JMenuBar implements ActionListener {
             timeAndDate();
         }
         else if (itemName.equals("Print")) {
-
+            try {
+                textarea.print();
+            }
+            catch (Exception pr) {
+                JOptionPane.showMessageDialog(frame, pr.getMessage());
+            }
         }
         else if (itemName.equals("Open")) {
 
