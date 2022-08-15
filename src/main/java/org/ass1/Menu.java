@@ -70,7 +70,7 @@ public class Menu extends JMenuBar implements ActionListener {
             textarea.paste();
         }
         else if (itemName.equals("Save")) {
-
+            saveText();
         }
         else if (itemName.equals("Time and Date")){
             timeAndDate();
@@ -101,7 +101,32 @@ public class Menu extends JMenuBar implements ActionListener {
         Date date =new Date();
         textarea.setText(sdf.format(date));
     }
+    public void saveText(){
+        JFileChooser fc = new JFileChooser();
 
+        int responseButton = fc.showSaveDialog(null);
+
+        if (responseButton == JFileChooser.APPROVE_OPTION) {
+
+            File file = new File(fc.getSelectedFile().getAbsolutePath());
+
+            try {
+                FileWriter fileWriter = new FileWriter(file, false);
+                BufferedWriter writer = new BufferedWriter(fileWriter);
+                writer.write(textarea.getText());
+
+                writer.flush();
+                writer.close();
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(frame, e.getMessage());
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "cancelled save");
+        }
+
+    }
 
 
 
