@@ -84,7 +84,7 @@ public class Menu extends JMenuBar implements ActionListener {
             }
         }
         else if (itemName.equals("Open")) {
-
+            openFile();
         }
         else if (itemName.equals("New")) {
             textarea.setText("");
@@ -127,9 +127,31 @@ public class Menu extends JMenuBar implements ActionListener {
         }
 
     }
+    public void openFile(){
+        JFileChooser chooserFile = new JFileChooser();
+        int readFile = chooserFile.showOpenDialog(null);
+        if (readFile == JFileChooser.APPROVE_OPTION){
+            File fileInfor = new File(chooserFile.getSelectedFile().getAbsolutePath());
+            System.out.println();
+            try {
+                String fileLine = "", nextLine = "";
 
+                FileReader fileReader = new FileReader(fileInfor);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                nextLine = bufferedReader.readLine();
 
+                while ((fileLine = bufferedReader.readLine()) != null) {
+                    nextLine += "\n" + fileLine;
+                }
 
+                textarea.setText(nextLine);
+            }
+            catch (Exception evt) {
+                JOptionPane.showMessageDialog(frame, evt.getMessage());
+            }
+        }else
+            JOptionPane.showMessageDialog(frame,"Do not open file");
+    }
 
 
 }
