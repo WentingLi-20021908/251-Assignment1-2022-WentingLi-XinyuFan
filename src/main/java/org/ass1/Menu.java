@@ -17,11 +17,15 @@ public class Menu extends JMenuBar implements ActionListener {
         fileItems.add("New");
         fileItems.add("Open");
         fileItems.add("Save");
-        fileItems.add("Select text");
-        fileItems.add("Copy");
-        fileItems.add("Paste");
-        fileItems.add("Cut");
         JMenu mf =createMenuItems("File",fileItems);
+
+        ArrayList<String> editItems =new ArrayList<>();
+        editItems.add("Select text");
+        editItems.add("Copy");
+        editItems.add("Paste");
+        editItems.add("Cut");
+        JMenu me =createMenuItems("Edit",editItems);
+
 
         ArrayList<String> manageItems =new ArrayList<>();
         manageItems.add("Print");
@@ -38,6 +42,7 @@ public class Menu extends JMenuBar implements ActionListener {
         helpItems.add("Exit");
         JMenu mh =createMenuItems("Help",helpItems);
         this.add(mf);
+        this.add(me);
         this.add(ms);
         this.add(mv);
         this.add(mm);
@@ -69,6 +74,9 @@ public class Menu extends JMenuBar implements ActionListener {
         else if (itemName.equals("Paste")) {
             textarea.paste();
         }
+        else if (itemName.equals("Select text")){
+            textarea.selectAll();
+        }
         else if (itemName.equals("Save")) {
             saveText();
         }
@@ -99,7 +107,7 @@ public class Menu extends JMenuBar implements ActionListener {
     public void timeAndDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
         Date date =new Date();
-        textarea.setText(sdf.format(date));
+        textarea.setText(sdf.format(date)+"\n"+textarea.getText());
     }
     public void saveText(){
         JFileChooser fc = new JFileChooser();
