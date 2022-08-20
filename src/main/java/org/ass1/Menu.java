@@ -1,5 +1,15 @@
 package org.ass1;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfName;
+import com.lowagie.text.pdf.PdfString;
+import com.lowagie.text.pdf.PdfWriter;
+import org.odftoolkit.odfdom.doc.OdfTextDocument;
+import org.odftoolkit.odfdom.dom.element.text.TextPElement;
+import org.odftoolkit.odfdom.pkg.OdfElement;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -118,17 +128,25 @@ public class Menu extends JMenuBar implements ActionListener {
 
             File file = new File(fc.getSelectedFile().getAbsolutePath());
 
-            try {
-                FileWriter fileWriter = new FileWriter(file, false);
-                BufferedWriter writer = new BufferedWriter(fileWriter);
-                writer.write(textarea.getText());
+            String fileName = file.getName();
+            if(fileName.split("\\.")[1].toLowerCase().equals("pdf")){
+                saveAsPDFFile(file);
+            }else if(fileName.split("\\.")[1].toLowerCase().equals("odt")){
+                saveAsODT(file);
+            } else {
+                try {
+                    FileWriter fileWriter = new FileWriter(file, false);
+                    BufferedWriter writer = new BufferedWriter(fileWriter);
+                    writer.write(textarea.getText());
 
-                writer.flush();
-                writer.close();
+                    writer.flush();
+                    writer.close();
+                }
+                catch (Exception e) {
+                    JOptionPane.showMessageDialog(frame, e.getMessage());
+                }
             }
-            catch (Exception e) {
-                JOptionPane.showMessageDialog(frame, e.getMessage());
-            }
+
         }
         else{
             JOptionPane.showMessageDialog(frame, "cancelled save");
@@ -139,27 +157,73 @@ public class Menu extends JMenuBar implements ActionListener {
         JFileChooser chooserFile = new JFileChooser();
         int readFile = chooserFile.showOpenDialog(null);
         if (readFile == JFileChooser.APPROVE_OPTION){
-            File fileInfor = new File(chooserFile.getSelectedFile().getAbsolutePath());
-            System.out.println();
-            try {
-                String fileLine = "", nextLine = "";
+            File file = new File(chooserFile.getSelectedFile().getAbsolutePath());
 
-                FileReader fileReader = new FileReader(fileInfor);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                nextLine = bufferedReader.readLine();
-
-                while ((fileLine = bufferedReader.readLine()) != null) {
-                    nextLine += "\n" + fileLine;
-                }
-
-                textarea.setText(nextLine);
-            }
-            catch (Exception evt) {
-                JOptionPane.showMessageDialog(frame, evt.getMessage());
+            String fileName = file.getName();
+            if(fileName.split("\\.")[1].toLowerCase().equals("odt")){
+                openODTFile(file);
+            }else{
+                openStandardFile(file);
             }
         }else
             JOptionPane.showMessageDialog(frame,"Do not open file");
     }
 
+    public void saveAsODT(File file){
+        OdfTextDocument odt = null;
+        try {
+            odt = OdfTextDocument.newTextDocument();
+            odt.addText(textarea.getText());
+            odt.save(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveAsPDFFile(File file){
+        Document document = new Document();
+        try {
+            final PdfWriter instance = PdfWriter.getInstance(document, new FileOutputStream(file));
+            document.open();
+            instance.getInfo().put(PdfName.CREATOR, new PdfString(Document.getVersion()));
+            document.add(new Paragraph(textarea.getText()));
+        } catch (DocumentException | IOException de) {
+            System.err.println(de.getMessage());
+        }
+
+        document.close();
+    }
+
+    public void openODTFile(File file){
+        try {
+            OdfTextDocument odt = OdfTextDocument.loadDocument(file);
+            OdfElement root = odt.getContentRoot();
+
+            OdfElement firstParagraph = OdfElement.findFirstChildNode(TextPElement.class, root);
+            textarea.setText(firstParagraph.getTextContent());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void openStandardFile(File file){
+        try {
+            String fileLine = "", nextLine = "";
+
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            nextLine = bufferedReader.readLine();
+
+            while ((fileLine = bufferedReader.readLine()) != null) {
+                nextLine += "\n" + fileLine;
+            }
+
+            textarea.setText(nextLine);
+        }
+        catch (Exception evt) {
+            JOptionPane.showMessageDialog(frame, evt.getMessage());
+        }
+    }
 
 }
