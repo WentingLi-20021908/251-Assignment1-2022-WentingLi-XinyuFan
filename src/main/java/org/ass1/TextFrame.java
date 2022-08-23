@@ -17,7 +17,7 @@ class TextFrame extends JFrame {
 
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null); 
         frame.setVisible(true);
     }
 

@@ -96,7 +96,7 @@ public class Menu extends JMenuBar implements ActionListener {
 
         JMenu mb = new JMenu(menuName);
         for (int i = 0; i < items.size(); i++) {
-            JMenuItem item = new JMenuItem(items.get(i));
+            JMenuItem item = new JMenuItem(items.get(i)); 
             item.addActionListener(this);
             mb.add(item);
         }
