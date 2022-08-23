@@ -15,9 +15,10 @@ class TextFrame extends JFrame {
         Menu menu = new Menu(frame);
         frame.setJMenuBar(menu);
 
-
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setSize(500, 500);
-        frame.show();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
 
