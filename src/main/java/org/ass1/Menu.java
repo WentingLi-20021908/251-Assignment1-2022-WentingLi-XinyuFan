@@ -96,7 +96,7 @@ public class Menu extends JMenuBar implements ActionListener {
 
         JMenu mb = new JMenu(menuName);
         for (int i = 0; i < items.size(); i++) {
-            JMenuItem item = new JMenuItem(items.get(i)); 
+            JMenuItem item = new JMenuItem(items.get(i));
             item.addActionListener(this);
             mb.add(item);
         }
@@ -131,11 +131,18 @@ public class Menu extends JMenuBar implements ActionListener {
         } else if (itemName.equals("Exit")) {
             frame.setVisible(false);
         } else if (itemName.equals("About")) {
-
+            showAbout();
         } else if (itemName.equals("Text") || itemName.equals("Java") || itemName.equals("JavaScript")
                 || itemName.equals("Cpp") || itemName.equals("Python") || itemName.equals("Css")) {
             setSyntaxEditingStyle(itemName);
         }
+    }
+
+    private void showAbout() {
+        StringBuilder msgBuilder = new StringBuilder();
+        msgBuilder.append("A Text editor").append("\n")
+                .append("Team members: Andy Jack").append("\n");
+        JOptionPane.showMessageDialog(null, msgBuilder.toString(), "About Text Editor", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void setSyntaxEditingStyle(String style) {
