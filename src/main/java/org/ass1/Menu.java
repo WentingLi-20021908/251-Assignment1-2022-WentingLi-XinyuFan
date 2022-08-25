@@ -6,6 +6,7 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfString;
 import com.lowagie.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -17,7 +18,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -26,6 +29,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.Highlighter.HighlightPainter;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.odftoolkit.odfdom.doc.OdfTextDocument;
@@ -60,7 +68,7 @@ public class Menu extends JMenuBar implements ActionListener {
         viewItems.add("Time and Date");
         JMenu mv = createMenuItems("View", viewItems);
 
-        JMenu ms = new JMenu("Search");
+        JMenu ms = createMenuItems("Search", Collections.singletonList("Find word"));
 
         ArrayList<String> helpItems = new ArrayList<>();
         helpItems.add("About");
@@ -92,7 +100,7 @@ public class Menu extends JMenuBar implements ActionListener {
         frame.add(scrollPane);
     }
 
-    public JMenu createMenuItems(String menuName, ArrayList<String> items) {
+    public JMenu createMenuItems(String menuName, List<String> items) {
 
         JMenu mb = new JMenu(menuName);
         for (int i = 0; i < items.size(); i++) {
@@ -135,6 +143,42 @@ public class Menu extends JMenuBar implements ActionListener {
         } else if (itemName.equals("Text") || itemName.equals("Java") || itemName.equals("JavaScript")
                 || itemName.equals("Cpp") || itemName.equals("Python") || itemName.equals("Css")) {
             setSyntaxEditingStyle(itemName);
+        } else if (itemName.equals("Find word")) {
+            searchText();
+        }
+    }
+
+    private void searchText() {
+        String word = JOptionPane.showInputDialog(
+                null,
+                "Input word to search",
+                ""
+        );
+
+        if (word != null && !word.isEmpty()) {
+            String text = textarea.getText();
+            Highlighter highlighter = textarea.getHighlighter();
+            highlighter.removeAllHighlights();
+            HighlightPainter painter = new DefaultHighlightPainter(Color.YELLOW);
+            int count = 0;
+            int start = 0;
+            int pos;
+            while ((pos = text.indexOf(word, start)) != -1) {
+                count++;
+                try {
+                    highlighter.addHighlight(pos, pos + word.length(), painter);
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Failed to highlight word", "Search word",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
+                start = pos + word.length() + 1;
+            }
+
+            if (count == 0) {
+                JOptionPane.showMessageDialog(null, "Word not found", "Search word", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
