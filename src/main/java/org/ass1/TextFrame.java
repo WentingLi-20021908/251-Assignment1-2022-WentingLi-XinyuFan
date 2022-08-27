@@ -5,14 +5,14 @@ import javax.swing.*;
 class TextFrame extends JFrame {
 
     // Frame
-    JFrame frame;
+    private JFrame frame;
 
-    TextFrame()
-    {
+    public TextFrame() {
+        super();
         // Create a frame
         frame = new JFrame("Test Editor");
 
-        Menu menu = new Menu(frame);
+        final MenuBar menu = new MenuBar(frame);
         frame.setJMenuBar(menu);
 
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -20,7 +20,4 @@ class TextFrame extends JFrame {
         frame.setLocationRelativeTo(null); 
         frame.setVisible(true);
     }
-
-
-
 }

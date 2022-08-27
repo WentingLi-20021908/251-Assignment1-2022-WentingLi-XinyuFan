@@ -1,0 +1,274 @@
+<METRICS profile="Lines of code metrics" timestamp="Sat, 27 Aug 2022 23:37:15 NZST">
+	<METRIC category="Method" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="org.ass1.MenuBar.MenuBar(JFrame)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.actionPerformed(ActionEvent)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.createMenuItems(String, List&lt;String&gt;)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openFile()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openODTFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openStandardFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsODT(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsPDFFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveText()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.searchText()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.setSyntaxEditingStyle(String)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.showAbout()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.timeAndDate()" value="0.0"/>
+		<VALUE measured="org.ass1.Program.main(String[])" value="1.0"/>
+		<VALUE measured="org.ass1.TextFrame.TextFrame()" value="1.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.ass1.MenuBar.MenuBar(JFrame)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.actionPerformed(ActionEvent)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.createMenuItems(String, List&lt;String&gt;)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openFile()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openODTFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.openStandardFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsODT(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsPDFFile(File)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveText()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.searchText()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.setSyntaxEditingStyle(String)" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.showAbout()" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar.timeAndDate()" value="0.0"/>
+		<VALUE measured="org.ass1.Program.main(String[])" value="0.0"/>
+		<VALUE measured="org.ass1.TextFrame.TextFrame()" value="0.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="org.ass1.MenuBar.MenuBar(JFrame)" value="47.0"/>
+		<VALUE measured="org.ass1.MenuBar.actionPerformed(ActionEvent)" value="35.0"/>
+		<VALUE measured="org.ass1.MenuBar.createMenuItems(String, List&lt;String&gt;)" value="9.0"/>
+		<VALUE measured="org.ass1.MenuBar.openFile()" value="15.0"/>
+		<VALUE measured="org.ass1.MenuBar.openODTFile(File)" value="10.0"/>
+		<VALUE measured="org.ass1.MenuBar.openStandardFile(File)" value="14.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsODT(File)" value="9.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsPDFFile(File)" value="12.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveText()" value="25.0"/>
+		<VALUE measured="org.ass1.MenuBar.searchText()" value="29.0"/>
+		<VALUE measured="org.ass1.MenuBar.setSyntaxEditingStyle(String)" value="25.0"/>
+		<VALUE measured="org.ass1.MenuBar.showAbout()" value="6.0"/>
+		<VALUE measured="org.ass1.MenuBar.timeAndDate()" value="5.0"/>
+		<VALUE measured="org.ass1.Program.main(String[])" value="5.0"/>
+		<VALUE measured="org.ass1.TextFrame.TextFrame()" value="11.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="org.ass1.MenuBar.MenuBar(JFrame)" value="47.0"/>
+		<VALUE measured="org.ass1.MenuBar.actionPerformed(ActionEvent)" value="35.0"/>
+		<VALUE measured="org.ass1.MenuBar.createMenuItems(String, List&lt;String&gt;)" value="9.0"/>
+		<VALUE measured="org.ass1.MenuBar.openFile()" value="15.0"/>
+		<VALUE measured="org.ass1.MenuBar.openODTFile(File)" value="10.0"/>
+		<VALUE measured="org.ass1.MenuBar.openStandardFile(File)" value="14.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsODT(File)" value="9.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsPDFFile(File)" value="12.0"/>
+		<VALUE measured="org.ass1.MenuBar.saveText()" value="25.0"/>
+		<VALUE measured="org.ass1.MenuBar.searchText()" value="29.0"/>
+		<VALUE measured="org.ass1.MenuBar.setSyntaxEditingStyle(String)" value="25.0"/>
+		<VALUE measured="org.ass1.MenuBar.showAbout()" value="6.0"/>
+		<VALUE measured="org.ass1.MenuBar.timeAndDate()" value="5.0"/>
+		<VALUE measured="org.ass1.Program.main(String[])" value="4.0"/>
+		<VALUE measured="org.ass1.TextFrame.TextFrame()" value="10.0"/>
+	</METRIC>
+	<METRIC category="Method" name="Relative lines of code" abbreviation="RLOC">
+		<VALUE measured="org.ass1.MenuBar.MenuBar(JFrame)" value="0.19183673469387755"/>
+		<VALUE measured="org.ass1.MenuBar.actionPerformed(ActionEvent)" value="0.14285714285714285"/>
+		<VALUE measured="org.ass1.MenuBar.createMenuItems(String, List&lt;String&gt;)" value="0.036734693877551024"/>
+		<VALUE measured="org.ass1.MenuBar.openFile()" value="0.061224489795918366"/>
+		<VALUE measured="org.ass1.MenuBar.openODTFile(File)" value="0.04081632653061224"/>
+		<VALUE measured="org.ass1.MenuBar.openStandardFile(File)" value="0.05714285714285714"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsODT(File)" value="0.036734693877551024"/>
+		<VALUE measured="org.ass1.MenuBar.saveAsPDFFile(File)" value="0.04897959183673469"/>
+		<VALUE measured="org.ass1.MenuBar.saveText()" value="0.10204081632653061"/>
+		<VALUE measured="org.ass1.MenuBar.searchText()" value="0.11836734693877551"/>
+		<VALUE measured="org.ass1.MenuBar.setSyntaxEditingStyle(String)" value="0.10204081632653061"/>
+		<VALUE measured="org.ass1.MenuBar.showAbout()" value="0.024489795918367346"/>
+		<VALUE measured="org.ass1.MenuBar.timeAndDate()" value="0.02040816326530612"/>
+		<VALUE measured="org.ass1.Program.main(String[])" value="0.7142857142857143"/>
+		<VALUE measured="org.ass1.TextFrame.TextFrame()" value="0.7333333333333333"/>
+	</METRIC>
+	<METRIC category="Class" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="org.ass1.MainTest" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar" value="0.0"/>
+		<VALUE measured="org.ass1.Program" value="1.0"/>
+		<VALUE measured="org.ass1.TextFrame" value="2.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.ass1.MainTest" value="0.0"/>
+		<VALUE measured="org.ass1.MenuBar" value="0.0"/>
+		<VALUE measured="org.ass1.Program" value="0.0"/>
+		<VALUE measured="org.ass1.TextFrame" value="0.0"/>
+	</METRIC>
+	<METRIC category="Class" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="org.ass1.MainTest" value="2.0"/>
+		<VALUE measured="org.ass1.MenuBar" value="245.0"/>
+		<VALUE measured="org.ass1.Program" value="7.0"/>
+		<VALUE measured="org.ass1.TextFrame" value="15.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="" value="0.0"/>
+		<VALUE measured="org.ass1" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Comment lines of code (recursive)" abbreviation="CLOC(rec)">
+		<VALUE measured="" value="5.0"/>
+		<VALUE measured="org" value="4.0"/>
+		<VALUE measured="org.ass1" value="4.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="org.ass1" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Javadoc lines of code (recursive)" abbreviation="JLOC(rec)">
+		<VALUE measured="org.ass1" value="0.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="" value="34.0"/>
+		<VALUE measured="org.ass1" value="299.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of code (recursive)" abbreviation="LOC(rec)">
+		<VALUE measured="" value="333.0"/>
+		<VALUE measured="org" value="299.0"/>
+		<VALUE measured="org.ass1" value="299.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="" value="34.0"/>
+		<VALUE measured="org.ass1" value="296.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of product code (recursive)" abbreviation="LOCp(rec)">
+		<VALUE measured="" value="330.0"/>
+		<VALUE measured="org" value="296.0"/>
+		<VALUE measured="org.ass1" value="296.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="" value="0.0"/>
+		<VALUE measured="org.ass1" value="3.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Lines of test code (recursive)" abbreviation="LOCt(rec)">
+		<VALUE measured="" value="3.0"/>
+		<VALUE measured="org" value="3.0"/>
+		<VALUE measured="org.ass1" value="3.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="" value="34.0"/>
+		<VALUE measured="org.ass1" value="296.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="" value="34.0"/>
+		<VALUE measured="org.ass1" value="293.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (product, recursive)" abbreviation="NCLOCp(rec)">
+		<VALUE measured="" value="327.0"/>
+		<VALUE measured="org" value="293.0"/>
+		<VALUE measured="org.ass1" value="293.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="" value="0.0"/>
+		<VALUE measured="org.ass1" value="3.0"/>
+	</METRIC>
+	<METRIC category="Package" name="Non-comment lines of code (test, recursive)" abbreviation="NCLOCt(rec)">
+		<VALUE measured="" value="3.0"/>
+		<VALUE measured="org" value="3.0"/>
+		<VALUE measured="org.ass1" value="3.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of CSS" abbreviation="L(CSS)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Groovy" abbreviation="L(Groovy)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of HTML" abbreviation="L(HTML)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Java" abbreviation="L(J)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="299.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of JavaScript" abbreviation="L(JS)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of JSP" abbreviation="L(JSP)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of Kotlin" abbreviation="L(KT)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="0.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of XML" abbreviation="L(XML)">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="104.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="407.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="330.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="3.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="404.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="327.0"/>
+	</METRIC>
+	<METRIC category="Module" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="251-Assignment1-2022-WentingLi-XinyuFan" value="3.0"/>
+	</METRIC>
+	<METRIC category="FileType" name="Lines of code" abbreviation="LOC">
+		<VALUE measured=".gitignore (GitIgnore)" value="4.0"/>
+		<VALUE measured="Java" value="299.0"/>
+		<VALUE measured="XML" value="104.0"/>
+		<VALUE measured="YAML" value="0.0"/>
+	</METRIC>
+	<METRIC category="FileType" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured=".gitignore (GitIgnore)" value="4.0"/>
+		<VALUE measured="Java" value="296.0"/>
+		<VALUE measured="XML" value="104.0"/>
+		<VALUE measured="YAML" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Comment lines of code" abbreviation="CLOC">
+		<VALUE measured="project" value="7.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Javadoc lines of code" abbreviation="JLOC">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of CSS" abbreviation="L(CSS)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Groovy" abbreviation="L(Groovy)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of HTML" abbreviation="L(HTML)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Java" abbreviation="L(J)">
+		<VALUE measured="project" value="299.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of JavaScript" abbreviation="L(JS)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of JSP" abbreviation="L(JSP)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of Kotlin" abbreviation="L(KT)">
+		<VALUE measured="project" value="0.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of XML" abbreviation="L(XML)">
+		<VALUE measured="project" value="104.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of code" abbreviation="LOC">
+		<VALUE measured="project" value="407.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of product code" abbreviation="LOCp">
+		<VALUE measured="project" value="330.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Lines of test code" abbreviation="LOCt">
+		<VALUE measured="project" value="3.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code" abbreviation="NCLOC">
+		<VALUE measured="project" value="404.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code (product)" abbreviation="NCLOCp">
+		<VALUE measured="project" value="327.0"/>
+	</METRIC>
+	<METRIC category="Project" name="Non-comment lines of code (test)" abbreviation="NCLOCt">
+		<VALUE measured="project" value="3.0"/>
+	</METRIC>
+</METRICS>
