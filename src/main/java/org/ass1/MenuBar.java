@@ -6,160 +6,148 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfName;
 import com.lowagie.text.pdf.PdfString;
 import com.lowagie.text.pdf.PdfWriter;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
-import javax.swing.text.Highlighter;
-import javax.swing.text.Highlighter.HighlightPainter;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.odftoolkit.odfdom.doc.OdfTextDocument;
 import org.odftoolkit.odfdom.dom.element.text.TextPElement;
 import org.odftoolkit.odfdom.pkg.OdfElement;
 
-public class Menu extends JMenuBar implements ActionListener {
+import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter.DefaultHighlightPainter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.Highlighter.HighlightPainter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
-    RSyntaxTextArea textarea;
-    JFrame frame;
+public class MenuBar extends JMenuBar implements ActionListener {
 
-    public Menu(JFrame frame) {
+    private RSyntaxTextArea textarea;
+    private JFrame frame;
+
+    public MenuBar(final JFrame frame) {
+        super();
         this.frame = frame;
-        ArrayList<String> fileItems = new ArrayList<>();
+        final ArrayList<String> fileItems = new ArrayList<>();
         fileItems.add("New");
         fileItems.add("Open");
         fileItems.add("Save");
-        JMenu mf = createMenuItems("File", fileItems);
+        final JMenu fileMenu = createMenuItems("File", fileItems);
 
-        ArrayList<String> editItems = new ArrayList<>();
+        final ArrayList<String> editItems = new ArrayList<>();
         editItems.add("Select text");
         editItems.add("Copy");
         editItems.add("Paste");
         editItems.add("Cut");
-        JMenu me = createMenuItems("Edit", editItems);
+        final JMenu editMenu = createMenuItems("Edit", editItems);
 
-        ArrayList<String> manageItems = new ArrayList<>();
+        final ArrayList<String> manageItems = new ArrayList<>();
         manageItems.add("Print");
-        JMenu mm = createMenuItems("Manage", manageItems);
+        final JMenu manageMenu = createMenuItems("Manage", manageItems);
 
-        ArrayList<String> viewItems = new ArrayList<>();
+        final ArrayList<String> viewItems = new ArrayList<>();
         viewItems.add("Time and Date");
-        JMenu mv = createMenuItems("View", viewItems);
+        final JMenu viewMenu = createMenuItems("View", viewItems);
 
-        JMenu ms = createMenuItems("Search", Collections.singletonList("Find word"));
+        final JMenu searchMenu = createMenuItems("Search", Collections.singletonList("Find word"));
 
-        ArrayList<String> helpItems = new ArrayList<>();
+        final ArrayList<String> helpItems = new ArrayList<>();
         helpItems.add("About");
         helpItems.add("Exit");
-        JMenu mh = createMenuItems("Help", helpItems);
+        final JMenu helpMenu = createMenuItems("Help", helpItems);
 
-        ArrayList<String> syntaxItems = new ArrayList<>();
+        final ArrayList<String> syntaxItems = new ArrayList<>();
         syntaxItems.add("Text");
         syntaxItems.add("Java");
         syntaxItems.add("Python");
         syntaxItems.add("Cpp");
         syntaxItems.add("Css");
         syntaxItems.add("JavaScript");
-        JMenu mSyn = createMenuItems("Syntax", syntaxItems);
+        final JMenu syntaxMenu = createMenuItems("Syntax", syntaxItems);
 
-        this.add(mf);
-        this.add(me);
-        this.add(ms);
-        this.add(mSyn);
-        this.add(mv);
-        this.add(mm);
-        this.add(mh);
+        this.add(fileMenu);
+        this.add(editMenu);
+        this.add(searchMenu);
+        this.add(syntaxMenu);
+        this.add(viewMenu);
+        this.add(manageMenu);
+        this.add(helpMenu);
 
         textarea = new RSyntaxTextArea();
         textarea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
-        JScrollPane scrollPane = new JScrollPane(textarea);
+        final JScrollPane scrollPane = new JScrollPane(textarea);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         frame.add(scrollPane);
     }
 
-    public JMenu createMenuItems(String menuName, List<String> items) {
+    public JMenu createMenuItems(final String menuName, final List<String> items) {
 
-        JMenu mb = new JMenu(menuName);
-        for (int i = 0; i < items.size(); i++) {
-            JMenuItem item = new JMenuItem(items.get(i));
+        final JMenu menu = new JMenu(menuName);
+        for (final String itemStr : items) {
+            final JMenuItem item = new JMenuItem(itemStr);
             item.addActionListener(this);
-            mb.add(item);
+            menu.add(item);
         }
-        return mb;
+        return menu;
     }
 
-    public void actionPerformed(ActionEvent e) {
-        String itemName = e.getActionCommand();
+    public void actionPerformed(final ActionEvent event) {
+        final String itemName = event.getActionCommand();
 
-        if (itemName.equals("Cut")) {
+        if ("Cut".equals(itemName)) {
             textarea.cut();
-        } else if (itemName.equals("Copy")) {
+        } else if ("Copy".equals(itemName)) {
             textarea.copy();
-        } else if (itemName.equals("Paste")) {
+        } else if ("Paste".equals(itemName)) {
             textarea.paste();
-        } else if (itemName.equals("Select text")) {
+        } else if ("Select text".equals(itemName)) {
             textarea.selectAll();
-        } else if (itemName.equals("Save")) {
+        } else if ("Save".equals(itemName)) {
             saveText();
-        } else if (itemName.equals("Time and Date")) {
+        } else if ("Time and Date".equals(itemName)) {
             timeAndDate();
-        } else if (itemName.equals("Print")) {
+        } else if ("Print".equals(itemName)) {
             try {
                 textarea.print();
             } catch (Exception pr) {
                 JOptionPane.showMessageDialog(frame, pr.getMessage());
             }
-        } else if (itemName.equals("Open")) {
+        } else if ("Open".equals(itemName)) {
             openFile();
-        } else if (itemName.equals("New")) {
+        } else if ("New".equals(itemName)) {
             textarea.setText("");
-        } else if (itemName.equals("Exit")) {
+        } else if ("Exit".equals(itemName)) {
             frame.setVisible(false);
-        } else if (itemName.equals("About")) {
+        } else if ("About".equals(itemName)) {
             showAbout();
-        } else if (itemName.equals("Text") || itemName.equals("Java") || itemName.equals("JavaScript")
-                || itemName.equals("Cpp") || itemName.equals("Python") || itemName.equals("Css")) {
+        } else if ("Text".equals(itemName) || "Java".equals(itemName) || "JavaScript".equals(itemName)
+                || "Cpp".equals(itemName) || "Python".equals(itemName) || "Css".equals(itemName)) {
             setSyntaxEditingStyle(itemName);
-        } else if (itemName.equals("Find word")) {
+        } else if ("Find word".equals(itemName)) {
             searchText();
         }
     }
 
     private void searchText() {
-        String word = JOptionPane.showInputDialog(
+        final String word = JOptionPane.showInputDialog(
                 null,
                 "Input word to search",
                 ""
         );
 
         if (word != null && !word.isEmpty()) {
-            String text = textarea.getText();
-            Highlighter highlighter = textarea.getHighlighter();
+            final String text = textarea.getText();
+            final Highlighter highlighter = textarea.getHighlighter();
             highlighter.removeAllHighlights();
-            HighlightPainter painter = new DefaultHighlightPainter(Color.YELLOW);
+            final HighlightPainter painter = new DefaultHighlightPainter(Color.YELLOW);
             int count = 0;
             int start = 0;
             int pos;
@@ -168,7 +156,6 @@ public class Menu extends JMenuBar implements ActionListener {
                 try {
                     highlighter.addHighlight(pos, pos + word.length(), painter);
                 } catch (BadLocationException e) {
-                    e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "Failed to highlight word", "Search word",
                             JOptionPane.ERROR_MESSAGE);
                 }
@@ -183,13 +170,13 @@ public class Menu extends JMenuBar implements ActionListener {
     }
 
     private void showAbout() {
-        StringBuilder msgBuilder = new StringBuilder();
+        final StringBuilder msgBuilder = new StringBuilder();
         msgBuilder.append("A Text editor").append("\n")
                 .append("Team members: Andy Jack").append("\n");
         JOptionPane.showMessageDialog(null, msgBuilder.toString(), "About Text Editor", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private void setSyntaxEditingStyle(String style) {
+    private void setSyntaxEditingStyle(final String style) {
         switch (style) {
             case "Text":
                 textarea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
@@ -209,33 +196,36 @@ public class Menu extends JMenuBar implements ActionListener {
             case "Python":
                 textarea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_PYTHON);
                 break;
+            default:
+                textarea.setSyntaxEditingStyle(null);
+                break;
         }
     }
 
     public void timeAndDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
-        Date date = new Date();
+        final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss a");
+        final Date date = new Date();
         textarea.setText(sdf.format(date) + "\n" + textarea.getText());
     }
 
     public void saveText() {
-        JFileChooser fc = new JFileChooser();
+        final JFileChooser fileChooser = new JFileChooser();
 
-        int responseButton = fc.showSaveDialog(null);
+        final int responseButton = fileChooser.showSaveDialog(null);
 
         if (responseButton == JFileChooser.APPROVE_OPTION) {
 
-            File file = new File(fc.getSelectedFile().getAbsolutePath());
+            final File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
 
-            String fileName = file.getName();
-            if (fileName.split("\\.")[1].toLowerCase().equals("pdf")) {
+            final String fileName = file.getName();
+            if ("pdf".equals(fileName.split("\\.")[1].toLowerCase())) {
                 saveAsPDFFile(file);
-            } else if (fileName.split("\\.")[1].toLowerCase().equals("odt")) {
+            } else if ("odt".equals(fileName.split("\\.")[1].toLowerCase())) {
                 saveAsODT(file);
             } else {
                 try {
-                    FileWriter fileWriter = new FileWriter(file, false);
-                    BufferedWriter writer = new BufferedWriter(fileWriter);
+                    final FileWriter fileWriter = new FileWriter(file, false);
+                    final BufferedWriter writer = new BufferedWriter(fileWriter);
                     writer.write(textarea.getText());
 
                     writer.flush();
@@ -252,13 +242,13 @@ public class Menu extends JMenuBar implements ActionListener {
     }
 
     public void openFile() {
-        JFileChooser chooserFile = new JFileChooser();
-        int readFile = chooserFile.showOpenDialog(null);
+        final JFileChooser chooserFile = new JFileChooser();
+        final int readFile = chooserFile.showOpenDialog(null);
         if (readFile == JFileChooser.APPROVE_OPTION) {
-            File file = new File(chooserFile.getSelectedFile().getAbsolutePath());
+            final File file = new File(chooserFile.getSelectedFile().getAbsolutePath());
 
-            String fileName = file.getName();
-            if (fileName.split("\\.")[1].toLowerCase().equals("odt")) {
+            final String fileName = file.getName();
+            if ("odt".equals(fileName.split("\\.")[1].toLowerCase())) {
                 openODTFile(file);
             } else {
                 openStandardFile(file);
@@ -268,52 +258,50 @@ public class Menu extends JMenuBar implements ActionListener {
         }
     }
 
-    public void saveAsODT(File file) {
-        OdfTextDocument odt = null;
+    public void saveAsODT(final File file) {
         try {
-            odt = OdfTextDocument.newTextDocument();
+            final OdfTextDocument odt = OdfTextDocument.newTextDocument();
             odt.addText(textarea.getText());
             odt.save(file);
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Error saving as ODT", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void saveAsPDFFile(File file) {
-        Document document = new Document();
+    public void saveAsPDFFile(final File file) {
+        final Document document = new Document();
         try {
             final PdfWriter instance = PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             instance.getInfo().put(PdfName.CREATOR, new PdfString(Document.getVersion()));
             document.add(new Paragraph(textarea.getText()));
         } catch (DocumentException | IOException de) {
-            System.err.println(de.getMessage());
+            JOptionPane.showMessageDialog(frame, de.getMessage(), "Error saving as PDF", JOptionPane.ERROR_MESSAGE);
         }
 
         document.close();
     }
 
-    public void openODTFile(File file) {
+    public void openODTFile(final File file) {
         try {
-            OdfTextDocument odt = OdfTextDocument.loadDocument(file);
-            OdfElement root = odt.getContentRoot();
+            final OdfTextDocument odt = OdfTextDocument.loadDocument(file);
+            final OdfElement root = odt.getContentRoot();
 
-            OdfElement firstParagraph = OdfElement.findFirstChildNode(TextPElement.class, root);
+            final OdfElement firstParagraph = OdfElement.findFirstChildNode(TextPElement.class, root);
             textarea.setText(firstParagraph.getTextContent());
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, e.getMessage(), "Error opening ODT File", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
-    public void openStandardFile(File file) {
+    public void openStandardFile(final File file) {
         try {
-            String fileLine = "", nextLine = "";
+            final FileReader fileReader = new FileReader(file);
+            final BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String nextLine = bufferedReader.readLine();
 
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            nextLine = bufferedReader.readLine();
-
+            String fileLine;
             while ((fileLine = bufferedReader.readLine()) != null) {
                 nextLine += "\n" + fileLine;
             }

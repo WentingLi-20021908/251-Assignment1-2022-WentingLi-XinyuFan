@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <pmdVersion>6.48.0</pmdVersion>
     </properties>
     <dependencies>
         <dependency>
@@ -28,7 +29,6 @@
             <artifactId>odfdom-java</artifactId>
             <version>0.10.0</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fifesoft/rsyntaxtextarea -->
         <dependency>
             <groupId>com.fifesoft</groupId>
@@ -57,6 +57,39 @@
             <scope>test</scope>
         </dependency>
 
-    </dependencies>
 
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.18.0</version>
+                <configuration>
+                    <skipEmptyReport>false</skipEmptyReport>
+                    <rulesets>
+                        <ruleset>/category/java/bestpractices.xml</ruleset>
+                        <ruleset>/category/java/codestyle.xml</ruleset>
+                    </rulesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.18.0</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
