@@ -4,20 +4,17 @@ import javax.swing.*;
 
 class TextFrame extends JFrame {
 
-    // Frame
-    private JFrame frame;
-
     public TextFrame() {
         super();
         // Create a frame
-        frame = new JFrame("Test Editor");
+        setTitle("Test Editor");
 
-        final MenuBar menu = new MenuBar(frame);
-        frame.setJMenuBar(menu);
+        final MenuBar menu = new MenuBar(this);
+        setJMenuBar(menu);
 
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null); 
-        frame.setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

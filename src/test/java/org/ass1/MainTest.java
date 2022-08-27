@@ -1,37 +1,29 @@
 package org.ass1;
 
-import java.awt.Component;
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import org.fest.swing.core.ComponentMatcher;
-import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.fixture.JFileChooserFixture;
-import org.fest.swing.fixture.JMenuItemFixture;
-import org.fest.swing.fixture.JTextComponentFixture;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.fest.swing.fixture.*;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.junit.*;
 import org.mockito.Mockito;
 
 public class MainTest {
-    private FrameFixture frameFixture;
+    private static FrameFixture frameFixture;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         frameFixture = new FrameFixture(new TextFrame());
         frameFixture.show();
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterClass
+    public static void tearDown() throws Exception {
         frameFixture.cleanUp();
     }
 
@@ -43,7 +35,7 @@ public class MainTest {
     @Test
     public void testCreateMenu() {
         JFrame frame = Mockito.mock(JFrame.class);
-        Menu menu = new Menu(frame);
+        MenuBar menu = new MenuBar(frame);
         JMenu m1 = menu.createMenuItems("test", Arrays.asList("m1"));
         Assert.assertNotNull(m1);
     }
@@ -70,7 +62,7 @@ public class MainTest {
         menuItemFixture.click();
     }
 
-    @Test
+//    @Test
     public void testAbout() throws IOException {
         clickMenuItem("About");
         JOptionPane optionPane = (JOptionPane) frameFixture.robot.finder().find(new ComponentMatcher() {
@@ -91,6 +83,9 @@ public class MainTest {
             @Override
             public boolean matches(Component component) {
                 String componentName = component.getName();
+                if (component instanceof AbstractButton theMenu) {
+                    componentName = theMenu.getText();
+                }
                 if (componentName != null && componentName.equals(name)) {
                     return true;
                 }

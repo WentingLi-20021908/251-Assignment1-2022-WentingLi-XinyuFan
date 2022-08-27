@@ -22,9 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 public class MenuBar extends JMenuBar implements ActionListener {
@@ -81,6 +79,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
         this.add(helpMenu);
 
         textarea = new RSyntaxTextArea();
+        textarea.setName("mainTextArea");
         textarea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_NONE);
         final JScrollPane scrollPane = new JScrollPane(textarea);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -99,6 +98,7 @@ public class MenuBar extends JMenuBar implements ActionListener {
         return menu;
     }
 
+    @Override
     public void actionPerformed(final ActionEvent event) {
         final String itemName = event.getActionCommand();
 
