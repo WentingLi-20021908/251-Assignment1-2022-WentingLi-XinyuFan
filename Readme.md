@@ -14,3 +14,6 @@
     Print
     Show different syntax
     Save as PDF
+
+### How to run the program
+    $ java org.ass1.Program
